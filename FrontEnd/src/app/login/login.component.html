@@ -1,0 +1,29 @@
+<br><br><br><br><br><br><br>
+<div class="row text-center">
+<div class="col-md-4 offset-4">
+    <div class="card">
+        <h5 class="card-header">Login</h5>
+        <div class="card-body">
+            <form #loginForm="ngForm" (submit)="loginForm.valid && login(loginForm)"  autocomplete="off">
+                <div>
+                    <label for="UserName">Username</label>&nbsp;
+                    <input name="UserName" required id="UserName" #UserName="ngModel" [(ngModel)]="formModel.UserName"> 
+                </div>
+                <br>
+                <div>
+                    <label for="Password">Password</label>&nbsp;&nbsp;
+                    <input type="Password" required name="Password" id="Password" #Password="ngModel" [(ngModel)]="formModel.Password"> 
+                </div>
+                <br>
+               
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button class="btn btn-primary" type="submit" [disabled]='!loginForm.valid'>Login</button>
+                    
+                  </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+

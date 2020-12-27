@@ -1,0 +1,35 @@
+<app-user></app-user>
+<br><br><br>
+<div class="row text-center">
+<div class="col-md-4 offset-4">
+    <div class="card">
+        <h5 class="card-header">Change Password</h5>
+        <div class="card-body">
+            <form #changePasswordForm="ngForm" (submit)="changePasswordForm.valid && onSubmit(changePasswordForm)"  autocomplete="off">
+                <div>
+                    <label for="oldPassword">Old Password :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input name="oldPassword" type="password" required id="oldPassword" #oldPassword="ngModel" [(ngModel)]="formModel.oldPassword"> 
+                </div>
+                <br>
+                <div>
+                    <label for="newPassword">New Password :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="newPassword" type="password" required name="newPassword" id="newPassword" #newPassword="ngModel" [(ngModel)]="formModel.newPassword"> 
+                </div>
+                <br>
+                <div>
+                    <label for="confirmPassword">Confirm Password :</label>&nbsp;&nbsp;
+                    <input type="confirmPassword" type="password" required name="confirmPassword" id="confirmPassword" #confirmPassword="ngModel" [(ngModel)]="formModel.confirmPassword"> 
+                </div>
+                <br>
+               
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button class="btn btn-primary" type="submit" [disabled]='!changePasswordForm.valid' >Change Password</button>
+                    
+                  </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+

@@ -1,0 +1,45 @@
+<app-user></app-user>
+
+ <div class="card">
+     <div class="card-body">
+         <div class="row col-md-8 offset-2">
+
+<form #profileForm="ngForm" (submit)="profileForm.valid && editProfile(profileForm)" autocomplete="off">
+    <div class="form-group">
+        <input name="Id" type="hidden"  #Id="ngModel" [(ngModel)]="service.userData.Id" ><br>
+        
+        
+        First Name :
+        <div  style="color:red"  *ngIf="FirstName.errors && (FirstName.dirty || FirstName.touched || profileForm.submitted)">
+            First name is required
+        </div>  
+        <input name="FirstName" required id="FirstName" [readonly]="service.profileMode" #FirstName="ngModel" [(ngModel)]="service.userData.FirstName" class="form-control " placeholder="First Name"><br>
+        
+        Last Name :
+        <div  style="color:red"  *ngIf="LastName.errors && (LastName.dirty || LastName.touched || profileForm.submitted)">
+            Last name is required
+        </div>
+        <input name="LastName" required id="LastName" [readonly]="service.profileMode" #LastName="ngModel" [(ngModel)]="service.userData.LastName" class="form-control " placeholder="Last Name"><br>
+       
+        Email Id :
+        <div  style="color:red"  *ngIf="Email.errors && (Email.dirty || Email.touched || Email.errors.pattern || profileForm.submitted)">
+            Valid Email is required
+        </div>
+        <input name="Email" id="Email" required #Email="ngModel"  [pattern]="emailPattern" [readonly]="service.profileMode" [(ngModel)]="service.userData.Email" class=" form-control" placeholder="Email Address"><br>
+        
+        Username :<input name="UserName" readonly [value]="service.userData.UserName" class="form-control " placeholder="Username"><br> 
+        <a class="btn btn-primary" (click)="enableEdit()" [hidden]="service.editMode">Edit Profile</a>
+        <button type="submit" class="btn btn-success btn-block" [hidden]="service.profileMode">Save Changes</button> &nbsp;
+        <a  class="btn  btn-block btn-danger" [hidden]="service.profileMode" (click)="cancleUpdation()">Cancle</a> 
+
+        
+    </div>
+</form>
+
+</div>
+</div>
+</div>
+
+
+
+

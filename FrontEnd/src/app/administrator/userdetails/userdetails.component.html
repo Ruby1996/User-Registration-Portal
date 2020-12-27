@@ -1,0 +1,44 @@
+
+
+
+<form #registerForm="ngForm" (submit)="registerForm.valid && register(registerForm)" autocomplete="off">
+    <div class="form-group">
+        <input name="Id" type="hidden"  [value]="service.userData.Id" ><br>
+        
+        
+        First Name : 
+        <div  style="color:red"  *ngIf="FirstName.errors && (FirstName.dirty || FirstName.touched || registerForm.submitted)">
+            First name is required
+        </div>  
+        <input name="FirstName" id="FirstName" #FirstName="ngModel" required [(ngModel)]="service.userData.FirstName" class="form-control inputText" placeholder="First Name"><br>
+       
+        Last Name :
+        <div  style="color:red"  *ngIf="LastName.errors && (LastName.dirty || LastName.touched || registerForm.submitted)">
+            Last name is required
+        </div>
+        <input name="LastName" #LastName="ngModel" [(ngModel)]="service.userData.LastName" required class="form-control inputText" placeholder="Last Name"><br>
+       
+        Email Id :
+        <div  style="color:red"  *ngIf="Email.errors && (Email.dirty || Email.touched || Email.errors.pattern || registerForm.submitted)">
+               Valid Email is required
+        </div>
+        <input name="Email" type="email" [pattern]="emailPattern" #Email="ngModel" [(ngModel)]="service.userData.Email" required class="form-control inputText" placeholder="Email Id"><br>
+        
+        Username :
+        <div  style="color:red"  *ngIf="UserName.errors && (UserName.dirty || UserName.touched || UserName.minlength ||registerForm.submitted)">
+            Username must have 4 characters
+            
+        </div>      
+        <input name="UserName" [readonly]="service.insertion" minlength="4" #UserName="ngModel" required [(ngModel)]="service.userData.UserName" class="form-control inputText" placeholder="Username"><br>
+       
+        Password :<input name="Password"  required  id="Password" type="password" [value]="service.userData.UserName" readonly class="form-control inputText" placeholder="Password"><br>
+
+       
+
+        <input type="hidden" name="SuperUser" #SuperUser="ngModel" [(ngModel)]="service.userData.SuperUser" value="false">
+        <button type="submit" class="btn btn-primary btn-block" [hidden]="service.hidden1" [disabled]='!registerForm.valid' >Register New User</button>
+        <button type="submit" class="btn btn-success btn-block" [hidden]="service.hidden2">Save Changes</button>
+       
+        
+    </div>
+</form>

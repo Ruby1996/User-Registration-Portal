@@ -1,0 +1,16 @@
+
+<nav>
+<div class="topnav px-4">
+  <!-- <a routerLinkActive="active" [routerLink]="['/user']">Home</a> -->
+  <a routerLinkActive="active" [routerLink]="['/userProfile']">My Profile</a>
+  <a routerLinkActive="active" [routerLink]="['/changePassword']">Change Password</a>
+  
+  <button class="btn btn-primary" style="float: right;" (click)="OnLogout()">Sign out</button>
+</div>
+</nav>
+
+
+<div>
+<strong>Welcome! {{userDetails.FirstName}} {{userDetails.LastName}}</strong>
+  
+</div>
