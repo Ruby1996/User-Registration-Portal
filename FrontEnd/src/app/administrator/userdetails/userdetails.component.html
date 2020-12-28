@@ -1,5 +1,6 @@
-
-
+<app-administrator></app-administrator>
+<br>
+<div class="row col-md-10 offset-1">   
 
 <form #registerForm="ngForm" (submit)="registerForm.valid && register(registerForm)" autocomplete="off">
     <div class="form-group">
@@ -29,16 +30,14 @@
             Username must have 4 characters
             
         </div>      
-        <input name="UserName" [readonly]="service.insertion" minlength="4" #UserName="ngModel" required [(ngModel)]="service.userData.UserName" class="form-control inputText" placeholder="Username"><br>
+        <input name="UserName"  minlength="4" #UserName="ngModel" required [(ngModel)]="service.userData.UserName" class="form-control inputText" placeholder="Username"><br>
        
         Password :<input name="Password"  required  id="Password" type="password" [value]="service.userData.UserName" readonly class="form-control inputText" placeholder="Password"><br>
 
-       
-
         <input type="hidden" name="SuperUser" #SuperUser="ngModel" [(ngModel)]="service.userData.SuperUser" value="false">
-        <button type="submit" class="btn btn-primary btn-block" [hidden]="service.hidden1" [disabled]='!registerForm.valid' >Register New User</button>
-        <button type="submit" class="btn btn-success btn-block" [hidden]="service.hidden2">Save Changes</button>
-       
+        <button type="submit" class="btn btn-primary btn-block" [disabled]='!registerForm.valid' >Register</button>
+        <a  class="btn btn-danger btn-block" [routerLink]="['/registration']">Cancel</a>
         
     </div>
 </form>
+</div>

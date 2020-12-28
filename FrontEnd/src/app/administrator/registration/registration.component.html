@@ -1,14 +1,22 @@
 
 <app-administrator></app-administrator>
+<br>
 
+<div class="row col-md-2 offset-1">
+    <a [routerLink]="['/userRegistration']" class="btn btn-primary">Add New User</a>
+</div>
 
-<div class="jumbtron">
+<div class="row col-md-10 offset-1">   
+<app-userdetailslist></app-userdetailslist>
+</div>
+
+<!-- <div class="jumbtron">
     <div class="row">
         <div class="col-md-5">
             <app-userdetails></app-userdetails>
         </div>
         <div class="col-md-7">
-            <app-userdetailslist></app-userdetailslist>
+          
         </div>
     </div>
-    </div>
+    </div> -->

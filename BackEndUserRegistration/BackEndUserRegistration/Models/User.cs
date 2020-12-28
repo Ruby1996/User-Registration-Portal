@@ -13,5 +13,7 @@ namespace BackEndUserRegistration.Models
         public string LastName { get; set; }
 
         public bool SuperUser { get; set; }
+
+        
     }
 }

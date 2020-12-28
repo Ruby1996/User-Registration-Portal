@@ -100,37 +100,32 @@ namespace BackEndUserRegistration.Controllers
                 return NotFound();
             }
             
-
             return userData;
-
-            //    if (id != user.Id)
-            //    {
-            //        return BadRequest();
-            //    }
-            //    _db.Entry(user).State = EntityState.Modified;
-            //    try
-            //    {
-            //        await _db.SaveChangesAsync();
-            //    }
-            //    catch (DbUpdateConcurrencyException)
-            //    {
-            //        if (!UserExists(id))
-            //        {
-            //            return NotFound();
-            //        }
-            //        else
-            //        {
-            //            throw;
-            //        }
-            //    }
-            //    return NoContent();
-
-
         }
 
-        private bool UserExists(string id)
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        [Route("ForAdmin")]
+        public string GetAdmin()
         {
-            return _db.usr.Any(e => e.Id == id);
+            return "Web for Admin";
         }
+
+        [HttpGet]
+        [Authorize(Roles = "User")]
+        [Route("ForUser")]
+        public string GetForUser()
+        {
+            return "Web for User";
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin,User")]
+        [Route("ForAll")]
+        public string GetForAll()
+        {
+            return "Web for All";
+        }
+
     }
 }

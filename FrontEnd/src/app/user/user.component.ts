@@ -13,6 +13,7 @@ export class UserComponent implements OnInit {
   userDetails:any;
   user: any;
   check:boolean;
+  
 
   constructor(private router:Router,private service:UserdetailService) { }
 
@@ -26,7 +27,7 @@ export class UserComponent implements OnInit {
 
   OnLogout(){
     localStorage.removeItem('token');
-    this.router.navigateByUrl('')
+    this.router.navigateByUrl('/login')
 
   }
 

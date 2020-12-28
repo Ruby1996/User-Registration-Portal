@@ -1,4 +1,4 @@
-<br><br>
+<br>
 <table id="users" >
     <th>First Name</th>
     <th>Last Name</th>
@@ -6,14 +6,14 @@
     <th>Username</th>
     <th></th>
     <tr *ngFor="let item of service.list">
-        <td (click)="populateForm(item)">{{item.FirstName}}</td>
-        <td (click)="populateForm(item)">{{item.LastName}}</td>
-        <td (click)="populateForm(item)">{{item.Email}}</td>
-        <td (click)="populateForm(item)">{{item.UserName}}</td>
+        <td >{{item.FirstName}}</td>
+        <td >{{item.LastName}}</td>
+        <td >{{item.Email}}</td>
+        <td >{{item.UserName}}</td>
         <td>
-           <button class="btn btn-primary btn-danger btn-sm " (click)="onDelete(item.Id)">Delete</button>
-
-
+        <button class="btn btn-primary btn-success btn-sm " (click)="populateForm(item)">Edit</button>
+      
+        <button class="btn btn-primary btn-danger btn-sm " (click)="onDelete(item.Id)">Delete</button>
         </td>
            
     </tr>

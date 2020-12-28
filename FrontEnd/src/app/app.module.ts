@@ -21,6 +21,8 @@ import { UserSettingsComponent } from './user/user-settings/user-settings.compon
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { RegistrationComponent } from './administrator/registration/registration.component';
 import { AdminSettingsComponent } from './administrator/admin-settings/admin-settings.component';
+import { UserProfileUpdateComponent } from './administrator/user-profile-update/user-profile-update.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { AdminSettingsComponent } from './administrator/admin-settings/admin-set
     UserSettingsComponent,
     UserProfileComponent,
     RegistrationComponent,
-    AdminSettingsComponent
+    AdminSettingsComponent,
+    UserProfileUpdateComponent,
+    ForbiddenComponent
     
   ],
   imports: [

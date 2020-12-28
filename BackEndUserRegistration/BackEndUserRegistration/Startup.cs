@@ -43,6 +43,7 @@ namespace BackEndUserRegistration
             services.AddDbContext<UserDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Connection")));
 
             services.AddDefaultIdentity<User>()
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<UserDbContext>();
 
             services.Configure<IdentityOptions>(options =>

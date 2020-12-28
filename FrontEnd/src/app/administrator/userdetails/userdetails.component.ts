@@ -19,30 +19,24 @@ export class UserdetailsComponent implements OnInit {
   constructor( public service: UserdetailService, private toastr:ToastrService,private router:Router) { }
 
   ngOnInit(): void {
-  this.service.hidden1=false
-  this.service.hidden2=true
-
+    this.setUserData();
   }
   
   register(registerForm:NgForm){
 
-    this.service.userData.Password = registerForm.value.UserName
-    
-
-if(this.service.userData.Id == 0){
+    this.service.userData.Password = registerForm.value.UserName;
 
   var confirm = prompt("Confirm the password")
 
   if(confirm == this.service.userData.Password){
 
         this.service.postUserDetails().subscribe(res=>{
-          
-          this.setUserData();
 
           registerForm.resetForm();
           
         this.toastr.success('Submitted Successfully','',{positionClass:'toast-custom'})
         this.service.refreshList();
+        this.router.navigateByUrl('/registration');
         
         },
         err=>{
@@ -51,26 +45,6 @@ if(this.service.userData.Id == 0){
   }
   else{this.toastr.error('Password mismatch','',{positionClass:'toast-custom'})}  
 
-      }
-    else{
-    
-      this.service.putUserDetails().subscribe(res=>{
-        
-       this.setUserData();
-
-          registerForm.resetForm();
-        this.toastr.success('Successfully Updated','',{positionClass:'toast-custom'})
-        this.service.refreshList();
-        this.service.insertion=false
-        this.service.hidden1=false
-        this.service.hidden2=true
-        
-        },
-        err=>{
-          console.log(err);
-        }) 
-
-    }  
   }
 
   setUserData(){

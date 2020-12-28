@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { element } from 'protractor';
 
 
 import {User} from './user.model';
@@ -47,7 +48,7 @@ login(formData){
 }
 
 getUserProfile(){
-  var tokenHeader = new HttpHeaders({'Authorization':'Bearer ' + localStorage.getItem('token')});
+ var tokenHeader = new HttpHeaders({'Authorization':'Bearer ' + localStorage.getItem('token')});
  return this.http.get(this.rootUrl + '/UserProfile',{headers : tokenHeader});
 
 
@@ -80,6 +81,20 @@ changePassword(newUserDetails){
 
   var tokenHeader = new HttpHeaders({'Authorization':'Bearer ' + localStorage.getItem('token')});
   return this.http.post(this.rootUrl + '/UserProfile/ChangePassword',resetPasswordViewModel,{headers : tokenHeader});
+
+}
+
+roleMatch(allowedRoles): boolean{
+  var isMatch = false;
+  var payload = JSON.parse(window.atob(localStorage.getItem('token').split('.')[1]));
+  var userRole = payload.role;
+  allowedRoles.forEach(element=>{
+    if(userRole == element){
+      isMatch = true;
+      return false;
+    }
+  });
+  return isMatch;
 
 }
 

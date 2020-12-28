@@ -50,6 +50,7 @@ namespace BackEndUserRegistration.Controllers
         [HttpPost]
         public async Task<Object> PostUser(UserModel model)
         {
+            model.Role = "User";
             var User = new User()
             {
 
@@ -57,12 +58,14 @@ namespace BackEndUserRegistration.Controllers
                 LastName = model.LastName,
                 UserName = model.Username,
                 Email = model.Email,
-                SuperUser =model.SuperUser
+                SuperUser = model.SuperUser,
+              
 
             };
             try
             {
                 var result = await _userManager.CreateAsync(User, model.Password);
+                await _userManager.AddToRoleAsync(User, model.Role);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -141,15 +144,20 @@ namespace BackEndUserRegistration.Controllers
             
             if (user != null && await _userManager.CheckPasswordAsync(user,model.Password))
             {
+                //get role
+                var role = await _userManager.GetRolesAsync(user);
+                IdentityOptions _options = new IdentityOptions();
 
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
+                   
 
                     //System.Security.Claims.
 
                     Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim("UserId",user.Id.ToString())
+                    new Claim("UserId",user.Id.ToString()),
+                    new Claim(_options.ClaimsIdentity.RoleClaimType,role.FirstOrDefault())
                 }),
                     Expires = DateTime.UtcNow.AddDays(1),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("1234567890123456")), SecurityAlgorithms.HmacSha256Signature)

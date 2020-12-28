@@ -26,5 +26,7 @@ namespace BackEndUserRegistration.Models
         public string Password { get; set; }
 
         public bool SuperUser { get; set; }
+
+        public string Role { get; set; }
     }
 }

@@ -1,0 +1,40 @@
+<app-administrator></app-administrator>
+<br>
+<div class="row col-md-10 offset-1">   
+
+    <form #updateForm="ngForm" (submit)="updateForm.valid && update(updateForm)" autocomplete="off">
+        <div class="form-group">
+            <input name="Id" type="hidden"  [value]="service.userData.Id" ><br>
+            
+            
+            First Name : 
+            <div  style="color:red"  *ngIf="FirstName.errors && (FirstName.dirty || FirstName.touched || updateForm.submitted)">
+                First name is required
+            </div>  
+            <input name="FirstName" id="FirstName" #FirstName="ngModel" required [(ngModel)]="service.userData.FirstName" class="form-control inputText" placeholder="First Name"><br>
+           
+            Last Name :
+            <div  style="color:red"  *ngIf="LastName.errors && (LastName.dirty || LastName.touched || updateForm.submitted)">
+                Last name is required
+            </div>
+            <input name="LastName" #LastName="ngModel" [(ngModel)]="service.userData.LastName" required class="form-control inputText" placeholder="Last Name"><br>
+           
+            Email Id :
+            <div  style="color:red"  *ngIf="Email.errors && (Email.dirty || Email.touched || Email.errors.pattern || updateForm.submitted)">
+                   Valid Email is required
+            </div>
+            <input name="Email" type="email" [pattern]="emailPattern" #Email="ngModel" [(ngModel)]="service.userData.Email" required class="form-control inputText" placeholder="Email Id"><br>
+            
+            Username :
+            <div  style="color:red"  *ngIf="UserName.errors && (UserName.dirty || UserName.touched || UserName.minlength || updateForm.submitted)">
+                Username must have 4 characters
+                
+            </div>      
+            <input name="UserName" readonly  #UserName="ngModel" required [(ngModel)]="service.userData.UserName" class="form-control inputText" placeholder="Username"><br>
+           
+            <button type="submit" class="btn btn-success btn-block" >Save Changes</button>
+            <a  class="btn btn-danger btn-block" [routerLink]="['/registration']">Cancel</a>
+            
+        </div>
+    </form>
+    </div>
