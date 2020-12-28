@@ -8,11 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./administrator.component.css']
 })
 export class AdministratorComponent implements OnInit {
-  isActive:any
+
   constructor(private router:Router) { }
 
   ngOnInit(): void {
-  this.isActive = true;
+  
   }
   OnLogout(){
     localStorage.removeItem('token');
