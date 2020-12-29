@@ -24,7 +24,7 @@ export class UserdetailService {
 
   constructor(private http: HttpClient) { }
 
-  refreshList(){
+  refresh(){
     this.http.get(this.rootUrl + '/Users' )
     .toPromise()
     .then(res => this.list = res as User[]);   

@@ -35,7 +35,7 @@ export class UserdetailsComponent implements OnInit {
           registerForm.resetForm();
           
         this.toastr.success('Submitted Successfully','',{positionClass:'toast-custom'})
-        this.service.refreshList();
+        this.service.refresh();
         this.router.navigateByUrl('/registration');
         
         },

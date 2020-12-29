@@ -18,10 +18,10 @@ export class UserdetailslistComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.service.refreshList();
+    this.service.refresh();
   }
 
-  populateForm(item:User){
+  displayDetails(item:User){
    this.service.insertion=true;
    this.service.hidden2=false;
    this.service.hidden1=true;
@@ -32,7 +32,7 @@ export class UserdetailslistComponent implements OnInit {
   onDelete(id){
     if(confirm("Are you sure you want to delete?"))
         this.service.deleteUserDetails(id).subscribe(res=>{
-          this.service.refreshList();
+          this.service.refresh();
           this.toastr.success('Deleted Successfully','',{positionClass:'toast-custom'});
 
         },err=>{

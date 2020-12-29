@@ -23,7 +23,7 @@ export class UserProfileUpdateComponent implements OnInit {
      
       this.toastr.success('Successfully Updated','',{positionClass:'toast-custom'})
        
-       this.service.refreshList();
+       this.service.refresh();
        this.router.navigateByUrl('/registration');
        
        

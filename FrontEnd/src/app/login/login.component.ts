@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   constructor(private router:Router, public service: UserdetailService, private toastr:ToastrService) { }
 
   ngOnInit(): void {
-    this.service.refreshList();
+    this.service.refresh();
 
   }
 
