@@ -1,8 +1,14 @@
+
+
+<div style="background-image: url('/assets/login.jpg');">
+    <div class="container">
 <br><br><br><br><br><br><br>
-<div class="row text-center">
+<!-- <img src="/assets/login.jpg" height="200" width="200"> -->
+<div class="row text-center" >
 <div class="col-md-4 offset-4">
     <div class="card">
         <h5 class="card-header">Login</h5>
+       
         <div class="card-body">
             <form #loginForm="ngForm" (submit)="loginForm.valid && login(loginForm)"  autocomplete="off">
                 <div>
@@ -21,9 +27,12 @@
                     
                   </div>
             </form>
+            
         </div>
     </div>
 </div>
+</div>
+<br><br><br><br><br><br><br><br><br>
 </div>
 
 
