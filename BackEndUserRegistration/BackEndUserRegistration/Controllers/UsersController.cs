@@ -152,8 +152,6 @@ namespace BackEndUserRegistration.Controllers
                 {
                    
 
-                    //System.Security.Claims.
-
                     Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim("UserId",user.Id.ToString()),
